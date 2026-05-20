@@ -1,34 +1,25 @@
-# KaizorOS
+# Kaizor OS
 
-KaizorOS is a custom operating system project built from scratch, featuring a modern GUI compositor, system services, and a complete application suite.
+Kaizor OS is a modern FreeBSD-based operating system with a custom Wayland compositor and a premium desktop environment inspired by macOS, Windows, and Zorin OS.
 
-## Structure
+## Project Goal
+- FreeBSD-based OS
+- Custom Wayland compositor (wlroots)
+- Modern desktop UI (dock, launcher, settings)
+- ISO build system like Zorin OS
 
-- `docs/` — Documentation (roadmap, architecture, build guide, GUI design, API reference, ISO release)
-- `base/` — Base system configs, patches, and branding
-- `kernel/` — Kernel and modules
-- `gui/` — GUI components (compositor, shell, panel, launcher, settings, file manager, notifications, greeter, widgets, themes)
-- `services/` — System daemons (session, network, bluetooth, power, audio, update)
-- `apps/` — Built-in applications (terminal, browser, text editor, calculator, system monitor)
-- `assets/` — Wallpapers, icons, fonts, sounds, animations
-- `installer/` — CLI and GUI installers, partitioner
-- `packaging/` — Package manifest and ports overlay
-- `build-system/` — Build scripts, package lists, overlay, and output
-- `tests/` — Compositor, GUI, and service tests
-- `tools/` — Theme editor, icon builder, debug tools
-- `.github/workflows/` — CI/CD pipelines
+## GUI Components (Kaizor Desktop)
+- **kaizor-compositor** (Wayland compositor engine)
+- **kaizor-panel** (dock/taskbar)
+- **kaizor-launcher** (start menu)
 
-## Building
+## Folder Structure
+- `gui/` : compositor + desktop apps
+- `services/` : system daemons (wifi, bluetooth, power)
+- `build-system/` : scripts for ISO generation
+- `assets/` : wallpapers, icons, fonts
 
-See `docs/build-guide.md` for full build instructions.
-
+## Build GUI (FreeBSD)
+Install dependencies:
 ```sh
-cd build-system
-./scripts/build_world.sh
-./scripts/build_gui.sh
-./scripts/build_iso.sh
-```
-
-## License
-
-See [LICENSE](LICENSE).
+pkg install wayland wlroots seatd dbus xkbcommon libinput mesa-libs qt6-base qt6-wayland cmake ninja pkgconf
