@@ -1,0 +1,24 @@
+#!/bin/sh
+
+export XDG_RUNTIME_DIR="/tmp/kaizor-runtime-$USER"
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 700 "$XDG_RUNTIME_DIR"
+
+export QT_QPA_PLATFORM="wayland"
+export SDL_VIDEODRIVER="wayland"
+
+echo "[Kaizor] Starting Kaizor Compositor..."
+/usr/local/bin/kaizor-compositor &
+
+sleep 1
+
+echo "[Kaizor] Starting Kaizor Panel..."
+/usr/local/bin/kaizor-panel &
+
+sleep 0.5
+
+echo "[Kaizor] Starting Kaizor Launcher..."
+/usr/local/bin/kaizor-launcher &
+
+echo "[Kaizor] Session running."
+wait
