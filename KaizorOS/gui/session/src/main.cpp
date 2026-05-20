@@ -2,6 +2,7 @@
 #include <QWidget>
 #include <QScreen>
 #include <QPainter>
+#include <QPainterPath>
 #include <QLinearGradient>
 #include <QHBoxLayout>
 #include <QLabel>
